@@ -1,0 +1,14 @@
+{
+  "name": "xb2-node",
+  "version": "1.0.0",
+  "description": "小白兔的开发之路-node",
+  "main": "index.js",
+  "author": "canlan <1481086138@qq.com>",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:canlan0711/xb2-node.git"
+  }
+}
