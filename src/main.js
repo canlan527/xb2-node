@@ -1,22 +1,21 @@
+const { RSA_X931_PADDING } = require('constants');
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  switch(req.url) {
-    case '/': 
-      res.write('hello ~ ');
-      break;
-    case '/posts':
-      res.write('posts');
-      break;
-    case '/signup':
-      res.write('signup');
-      break;
-    default:
-      res.writeHead(404)
-      res.write('404 Not Found');
-      break;
-    
+  const data = {
+    id: 1, 
+    title: '关山月',
+    content: '明月出天山，苍茫云海间'
   }
+
+  const jsonData = JSON.stringify(data);
+
+  res.writeHead(200, {
+    'Content-Type': 'application/json; charset=utf-8',
+  })
+  
+  res.write(jsonData)
+  
   res.end()
 })
 
