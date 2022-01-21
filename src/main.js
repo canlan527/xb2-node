@@ -1,7 +1,12 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  res.write('hello world')
+  console.log(req.headers['user-agent'])
+  res.writeHead(200, {
+    'Content-Type': 'text/html',
+  })
+  res.write(`<input />`)
+
   res.end()
 })
 
