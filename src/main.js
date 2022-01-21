@@ -1,12 +1,22 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  console.log(req.headers['user-agent'])
-  res.writeHead(200, {
-    'Content-Type': 'text/html',
-  })
-  res.write(`<input />`)
-
+  switch(req.url) {
+    case '/': 
+      res.write('hello ~ ');
+      break;
+    case '/posts':
+      res.write('posts');
+      break;
+    case '/signup':
+      res.write('signup');
+      break;
+    default:
+      res.writeHead(404)
+      res.write('404 Not Found');
+      break;
+    
+  }
   res.end()
 })
 
