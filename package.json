@@ -10,5 +10,8 @@
   "repository": {
     "type": "git",
     "url": "git@gitee.com:canlan0711/xb2-node.git"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
