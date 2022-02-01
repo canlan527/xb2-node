@@ -34,3 +34,12 @@ const data = [
 app.get('/posts', (req, res) => {
   res.send(data)
 })
+
+// 定义带参数的接口
+app.get('/posts/:id', (req, res) => {
+  const { id } = req.params
+
+  const resultList = data.filter(item => item.id === id)
+
+  res.send(resultList[0])
+})
