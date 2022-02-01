@@ -29,3 +29,8 @@ const data = [
     content: '日出江花红胜火，春来江水绿如蓝'
   },
 ]
+
+// 定义响应JSON 数据的应用接口
+app.get('/posts', (req, res) => {
+  res.send(data)
+})
