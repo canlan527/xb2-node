@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+// 使用 JSON 中间件
+app.use(express.json())
+
 app.listen(port, () => {
   console.log('🚀 服务已启动');
 });
@@ -42,4 +45,23 @@ app.get('/posts/:id', (req, res) => {
   const resultList = data.filter(item => item.id === id)
 
   res.send(resultList[0])
+})
+
+app.post('/posts', (req, res) => {
+  const { content } = req.body
+
+  // 设置响应状态吗
+  // res.statusCode = 201
+  res.status(201)
+
+  // 输出请求头部的 Sing-Along 数据
+  console.log(req.headers['sing-along']);
+  console.log(req.headers['content-type']);
+
+
+  // 设置响应的头部数据
+  res.set('Sing-Along', 'How I Wonder Waht u are')
+  res.send({
+    message: `结果是${content}`
+  })
 })
