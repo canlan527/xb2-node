@@ -1,8 +1,15 @@
-const cb = (callback) => {
-  const data = '🌏';
-  callback(data);
+const nature = () => {
+  return new Promise((resolve, reject) => {
+    console.log('...');
+    
+    setTimeout(() => {
+      resolve('🦖')
+    }, 2000)
+  })
 }
 
-cb((data) => {
-  console.log(data);
+nature().then(res => {
+  console.log(res);
 })
+
+console.log('🌋');
