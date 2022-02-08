@@ -8,8 +8,9 @@ const nature = () => {
   })
 }
 
-nature().then(res => {
-  console.log(res);
-})
-
+const demo = async () => {
+  const data = await nature();
+  console.log(data);
+}
+demo()
 console.log('🌋');
