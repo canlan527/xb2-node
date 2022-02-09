@@ -15,6 +15,9 @@ export const requestPost = (req: Request, res: Response, next: NextFunction) => 
  * 默认异常处理器
  */
 export const defaultErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+  if(err.message) {
+    console.log('🎮', err.message);
+  }
   let statusCode: number, message: string;
   // 处理异常
   switch(err.message) {
