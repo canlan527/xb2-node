@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { getPosts, createPost, updatePost } from './post.service'
+import { getPosts, createPost, updatePost, deletePost } from './post.service'
 import _ from 'lodash';
 /**
  * 内容列表
@@ -45,6 +45,22 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     const data = await updatePost(post, parseInt(postId, 10));
     res.send(data);
   }catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * 删除内容
+ */
+export const destroy = async (req: Request, res: Response, next: NextFunction) => {
+  // 获取ID
+  const { postId } = req.params;
+
+  // 删除内容
+  try {
+    const data = await deletePost(parseInt(postId));
+    res.send(data);
+  } catch (err) {
     next(err);
   }
 }

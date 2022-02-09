@@ -8,5 +8,7 @@ router.get('/posts', requestPost, postController.index); // 定义 post 接口
 
 router.post('/posts', postController.store); // 创建内容
 
-router.patch('/posts/:postId', postController.update); // 更新接口
+router.patch('/posts/:postId', postController.update); // 更新内容接口
+
+router.delete('/posts/:postId', postController.destroy); // 删除内容接口
 export default router; // 默认导出路由
