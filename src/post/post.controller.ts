@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { getPosts, createPost, updatePost } from './post.service'
-
+import _ from 'lodash';
 /**
  * 内容列表
  */
@@ -38,11 +38,11 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
   const { postId } = req.params;
 
   // 准备数据
-  const { title, content } = req.body;
-
+  // const { title, content } = req.body;
+  const post = _.pick(req.body, ['title','content']);
   // 更新
   try {
-    const data = await updatePost({ title, content }, parseInt(postId, 10));
+    const data = await updatePost(post, parseInt(postId, 10));
     res.send(data);
   }catch (err) {
     next(err);
