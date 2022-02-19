@@ -3,4 +3,9 @@ import * as userController from './user.controller';
 
 const router = express.Router();
 
+
+// 创建用户接口
+router.post('/users', userController.store);
+
+
 export default router;
