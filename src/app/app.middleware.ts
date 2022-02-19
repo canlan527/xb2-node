@@ -29,6 +29,10 @@ export const defaultErrorHandler = (err: any, req: Request, res: Response, next:
       statusCode = 400;
       message = '请提供密码';
       break;
+    case 'USER_ALREADY_EXIST':
+      statusCode = 409; // 代表名字冲突了
+      message = '用户名已经被占用了';
+      break;
     default:
       statusCode = 500;
       message = '服务暂时出了点问题~~ 请见谅~ 🌴'
