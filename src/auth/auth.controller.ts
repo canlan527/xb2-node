@@ -20,3 +20,10 @@ export const login = (req: Request, res: Response, next: NextFunction) => {
   }
 
 }
+
+/**
+ * 验证登录
+ */
+export const validate = (req: Request, res: Response, next: NextFunction) => {
+  res.sendStatus(200);
+};

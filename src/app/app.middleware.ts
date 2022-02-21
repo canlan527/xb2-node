@@ -1,26 +1,35 @@
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * 输出请求地址
- * @param req 
- * @param res 
- * @param next 
+ * @param req
+ * @param res
+ * @param next
  */
-export const requestPost = (req: Request, res: Response, next: NextFunction) => {
- console.log(req.url)
- next()
-}
+export const requestPost = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  console.log(req.url);
+  next();
+};
 
 /**
  * 默认异常处理器
  */
-export const defaultErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
-  if(err.message) {
+export const defaultErrorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  if (err.message) {
     console.log('🎮', err.message);
   }
   let statusCode: number, message: string;
   // 处理异常
-  switch(err.message) {
+  switch (err.message) {
     case 'NAME_IS_REQUIRED':
       statusCode = 400;
       message = '请提供用户名';
@@ -34,17 +43,21 @@ export const defaultErrorHandler = (err: any, req: Request, res: Response, next:
       message = '用户名已经被占用了';
       break;
     case 'USER_DOES_NOT_EXIST':
-      statusCode = 400; // 代表名字冲突了
+      statusCode = 400;
       message = '用户名不存在';
       break;
     case 'PASSWORD_DOSE_NOT_MACTH':
-        statusCode = 400; // 代表名字冲突了
-        message = '密码不正确';
-        break;
+      statusCode = 400;
+      message = '密码不正确';
+      break;
+    case 'UNAUTHORIZED':
+      statusCode = 401; // 未授权
+      message = '请先登录';
+      break;
     default:
       statusCode = 500;
-      message = '服务暂时出了点问题~~ 请见谅~ 🌴'
+      message = '服务暂时出了点问题~~ 请见谅~ 🌴';
       break;
   }
   res.status(statusCode).send({ message });
-}
+};
