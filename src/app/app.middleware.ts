@@ -33,6 +33,10 @@ export const defaultErrorHandler = (err: any, req: Request, res: Response, next:
       statusCode = 409; // 代表名字冲突了
       message = '用户名已经被占用了';
       break;
+    case 'USER_DOES_NOT_EXIST':
+      statusCode = 400; // 代表名字冲突了
+      message = '用户名不存在';
+      break;
     default:
       statusCode = 500;
       message = '服务暂时出了点问题~~ 请见谅~ 🌴'
