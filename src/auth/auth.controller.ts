@@ -1,13 +1,22 @@
 import { Request, Response, NextFunction} from 'express';
+import { signToken } from './auth.service'
 
 /**
  * 用户登录接口处理器
  */
 export const login = (req: Request, res: Response, next: NextFunction) => {
   // 准备数据
-  const { name, password } = req.body;
+  const { user: {id, name} } = req.body;
 
-  // 做出响应
-  res.send({message: `欢迎回来 ${name}`});
+  const payload = {id, name };
+
+  try {
+    // 签发令牌
+    const token = signToken({payload});
+    //做出响应
+    res.send({id, name, token});
+  } catch (err) {
+    next(err);
+  }
 
 }
